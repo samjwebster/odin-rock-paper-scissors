@@ -1,0 +1,51 @@
+body {
+    background-color: #ff6f3c;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 0;
+}
+
+h2 {
+    margin: 1em;
+}
+
+#game-container {
+    background-color: #155263;
+    min-width: 80vw;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    border-radius: 12px;
+    border-color: #ff9a3c;
+    border-width: 4px;
+    border-style: solid;
+    padding: 16px;
+}
+
+.text,.button {
+    color: #ffc93c;
+}
+
+#buttons {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-around;
+    align-content: center;
+}
+
+.button {
+    background-color: #155263;
+    border-color: #ff9a3c;
+    border-width: 4px;
+    font-size: 24px;
+    border-radius: 16px;
+    padding: 8px;
+    min-width: 150px;
+}
