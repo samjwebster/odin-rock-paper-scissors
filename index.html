@@ -11,21 +11,24 @@
 <body>
     <div id="game-container">
         <h1 class="text">Rock Paper Scissors</h1>
-        <h2 class="text">Make your choice...</h2>
+        <h3 class="text">Best of Five!</h4>
+        <h3 class="text">Make your choice to begin:</h3>
         <div id="buttons">
-            <button id="rock" class="button">Rock</button>
-            <button id="paper" class="button">Paper</button>
-            <button id="scissors" class="button">Scissors</button>
+            <button id="rock" class="button" onclick = "playRound('r')">Rock</button>
+            <button id="paper" class="button" onclick = "playRound('p')">Paper</button>
+            <button id="scissors" class="button" onclick = "playRound('s')">Scissors</button>
         </div>
-    </div>
-    <div id="icons-container">
-        <div id="user-choice">
-            <h3>User:</h3>
-
-        </div>
-        <div id="computer-choice">
-            <h3>Computer:</h3>
-
+        <div id="display-container">
+            <div id="icons-container">
+                <div id="user-choice">
+                    <h2 class="text" id="user-score">You: 0</h3>
+                </div>
+                <div id="computer-choice">
+                    <h2 class="text" id  ="computer-score">Computer: 0</h3>
+                </div>
+            </div>
+            <div id="text-container">
+            </div>
         </div>
     </div>
 </body>
