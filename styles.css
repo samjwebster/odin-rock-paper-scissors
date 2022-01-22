@@ -8,6 +8,9 @@ body {
 
 h1 {
     margin-bottom: 0.5em;
+    border-style: outset;
+    border-radius: 16px;
+    border-color: #ff9a3c;
 }
 
 h2 {
@@ -51,6 +54,7 @@ h3 {
 
     min-width: 50vw;
     min-height: 50vh;
+
 }
 
 #icons-container {
@@ -66,8 +70,8 @@ h3 {
 } 
 
 #resultText {
-    padding: 32px;
-    margin-bottom: 16px;
+    text-align: center;
+    align-self: flex-end;
 }
 
 #userchoice, #computerchoice {
@@ -105,4 +109,19 @@ h3 {
     border-style: outset;
     border-radius: 25vw;
     margin: 0;
+}
+
+#play-again {
+    background-color: #ff9a3c;
+    color: #155263;
+    border-color: #ffc93c;
+    display: none;
+    align-self: center;
+    justify-self: center;
+}
+
+#win {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
 }

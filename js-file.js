@@ -13,8 +13,12 @@ const uScoreText = document.querySelector("#user-score");
 
 const cScoreText = document.querySelector("#computer-score");
 
+const numWin = 5;
+
 let userScore = 0;
 let computerScore = 0;
+
+let gameOver = 0;
 
 function iconPath(rps) {
     switch (rps) {
@@ -33,92 +37,96 @@ function computerPlay() {
 }
 
 function playRound(choice) {
-    let computerChoice = computerPlay();
+    if(gameOver == 0) {
+        let computerChoice = computerPlay();
 
-    if (userCont.childElementCount < 2) {
-        let userIcon = document.createElement('img');
-        let computerIcon = document.createElement('img');
-        userIcon.classList.add('icon');
-        userIcon.id = 'userIcon';
-        computerIcon.classList.add('icon');
-        computerIcon.id = 'computerIcon';
-        userIcon.src = iconPath(choice);
-        computerIcon.src = iconPath(computerChoice);
-        userCont.appendChild(userIcon);
-        computerCont.appendChild(computerIcon);
-    } else {
-        let userIcon = document.getElementById('userIcon');
-        let computerIcon = document.getElementById('computerIcon');
-        userIcon.src = iconPath(choice);
-        computerIcon.src = iconPath(computerChoice);
-    }
-    
-    switch (choice) {
-        case 'r':
-            switch (computerChoice) {
-                case 'r':
-                    outcome(1);
-                    break;
-                case 'p':
-                    outcome(2);
-                    computerScore++;
-                    break;
-                case 's':
-                    outcome(3);
-                    userScore++;
-                    break;
-            }
-            break;
-        case 'p':
-            switch (computerChoice) {
-                case 'r':
-                    outcome(4);
-                    userScore++;
-                    break;
-                case 'p':
-                    outcome(5);
-                    break;
-                case 's':
-                    outcome(6);
-                    computerScore++;
-                    break;
-            }
-            break;
-        case 's':
+        if (userCont.childElementCount < 2) {
+            let userIcon = document.createElement('img');
+            let computerIcon = document.createElement('img');
+            userIcon.classList.add('icon');
+            userIcon.id = 'userIcon';
+            computerIcon.classList.add('icon');
+            computerIcon.id = 'computerIcon';
+            userIcon.src = iconPath(choice);
+            computerIcon.src = iconPath(computerChoice);
+            userCont.appendChild(userIcon);
+            computerCont.appendChild(computerIcon);
+        } else {
+            let userIcon = document.getElementById('userIcon');
+            let computerIcon = document.getElementById('computerIcon');
+            userIcon.src = iconPath(choice);
+            computerIcon.src = iconPath(computerChoice);
+        }
+        
+        switch (choice) {
+            case 'r':
                 switch (computerChoice) {
-                case 'r':
-                    outcome(7);
-                    computerScore++;
-                    break;
-                case 'p':
-                    outcome(8);
-                    userScore++;
-                    break;
-                case 's':
-                    outcome(9);
-                    break;
-            }
-            break;
-    } // end of switches
+                    case 'r':
+                        outcome(1);
+                        break;
+                    case 'p':
+                        outcome(2);
+                        computerScore++;
+                        break;
+                    case 's':
+                        outcome(3);
+                        userScore++;
+                        break;
+                }
+                break;
+            case 'p':
+                switch (computerChoice) {
+                    case 'r':
+                        outcome(4);
+                        userScore++;
+                        break;
+                    case 'p':
+                        outcome(5);
+                        break;
+                    case 's':
+                        outcome(6);
+                        computerScore++;
+                        break;
+                }
+                break;
+            case 's':
+                    switch (computerChoice) {
+                    case 'r':
+                        outcome(7);
+                        computerScore++;
+                        break;
+                    case 'p':
+                        outcome(8);
+                        userScore++;
+                        break;
+                    case 's':
+                        outcome(9);
+                        break;
+                }
+                break;
+        } // end of switches
 
-    uScoreText.textContent = "You: " + userScore;
-    cScoreText.textContent = "Computer: " + computerScore;
+        uScoreText.textContent = "You: " + userScore;
+        cScoreText.textContent = "Computer: " + computerScore;
 
-
-
+        if(userScore == numWin) {
+            win('User');
+        } else if(computerScore == numWin) {
+            win('Computer');
+        } 
+    }
     return;
 }
 
-const textCont = document.querySelector("#text-container");
-
+const dispCont = document.getElementById('display-container');
 
 function outcome(num) {
 
-    if (textCont.childElementCount < 1) {
+    if (dispCont.childElementCount < 2) {
         let resultText = document.createElement('em');
         resultText.id = 'resultText';
         resultText.classList.add('text');
-        textCont.appendChild(resultText);
+        dispCont.appendChild(resultText);
     } 
     let resultText = document.getElementById('resultText');
 
@@ -152,4 +160,21 @@ function outcome(num) {
             break;
     }
     return;
+}
+
+const winCont = document.getElementById('win');
+const againBut = document.getElementById('play-again');
+
+function win(who) {
+    gameOver = 1;
+    let message = document.createElement('h1');
+    message.textContent = who + " wins!";
+    message.classList.add('text');
+    winCont.appendChild(message);
+
+    dispCont.style.display = "none";
+
+
+    againBut.style.display = "flex";
+    winCont.appendChild(againBut);
 }

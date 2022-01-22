@@ -18,6 +18,8 @@
             <button id="paper" class="button" onclick = "playRound('p')">Paper</button>
             <button id="scissors" class="button" onclick = "playRound('s')">Scissors</button>
         </div>
+        <div id="win">
+        </div>
         <div id="display-container">
             <div id="icons-container">
                 <div id="user-choice">
@@ -27,9 +29,12 @@
                     <h2 class="text" id  ="computer-score">Computer: 0</h3>
                 </div>
             </div>
+            <!---
             <div id="text-container">
             </div>
+            --->
         </div>
+        <button id="play-again" class="button" onclick="location.reload()">Play Again?</button>
     </div>
 </body>
 </html>
